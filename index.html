@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>國小社會科素養評量｜2-1 臺灣的民主之路</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #eef2ff;
+      --primary-dark: #3730a3;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --danger: #dc2626;
+      --danger-light: #fef2f2;
+      --warning: #d97706;
+      --warning-light: #fffbeb;
+      --easy: #059669;
+      --medium: #d97706;
+      --hard: #dc2626;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --card-shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+      background: #f8fafc;
+      color: var(--slate-800);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%);
+      color: white;
+      padding: 24px 20px;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .header-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .header-desc {
+      font-size: 0.95rem;
+      color: #e0e7ff;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .tab-btn.active {
+      background: white;
+      color: #3730a3;
+      border-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-container {
+      max-width: 1080px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    .stats-bar {
+      background: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--slate-600);
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--slate-800);
+    }
+
+    .progress-box {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .progress-bar-bg {
+      height: 10px;
+      background: var(--slate-100);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4f46e5, #10b981);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .filter-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--slate-600);
+    }
+
+    .filter-chip {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--slate-200);
+      background: white;
+      color: var(--slate-700);
+      transition: all 0.2s;
+    }
+
+    .filter-chip:hover {
+      border-color: #94a3b8;
+      background: #f8fafc;
+    }
+
+    .filter-chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .filter-chip.chip-easy.active {
+      background: var(--easy);
+      border-color: var(--easy);
+    }
+
+    .filter-chip.chip-medium.active {
+      background: var(--medium);
+      border-color: var(--medium);
+    }
+
+    .filter-chip.chip-hard.active {
+      background: var(--hard);
+      border-color: var(--hard);
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--slate-200);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .question-card:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+
+    .q-num-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .q-number {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .q-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-easy {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+
+    .badge-medium {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .badge-hard {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .badge-bloom {
+      background: #e0e7ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+    }
+
+    .badge-page {
+      background: #f3e8ff;
+      color: #6b21a8;
+      border: 1px solid #e9d5ff;
+    }
+
+    .q-stem {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--slate-800);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .q-scenario {
+      background: #f8fafc;
+      border-left: 4px solid #4f46e5;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #334155;
+      font-style: italic;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .options-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #ffffff;
+      border: 1.5px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.96rem;
+      color: var(--slate-800);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      width: 100%;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: #4f46e5;
+      background: #eef2ff;
+      transform: translateY(-1px);
+    }
+
+    .opt-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-weight: 700;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+
+    .opt-text {
+      flex: 1;
+      padding-top: 1px;
+    }
+
+    .option-btn.selected {
+      border-color: #4f46e5;
+      background: #e0e7ff;
+    }
+
+    .option-btn.selected .opt-key {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .option-btn.correct {
+      border-color: var(--success) !important;
+      background: var(--success-light) !important;
+      color: #14532d !important;
+      font-weight: 700;
+    }
+
+    .option-btn.correct .opt-key {
+      background: var(--success) !important;
+      color: white !important;
+    }
+
+    .option-btn.wrong {
+      border-color: var(--danger) !important;
+      background: var(--danger-light) !important;
+      color: #7f1d1d !important;
+      text-decoration: line-through;
+    }
+
+    .option-btn.wrong .opt-key {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+
+    .explanation-box {
+      margin-top: 14px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.92rem;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .explanation-box.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .exp-title {
+      font-weight: 800;
+      color: #3730a3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .exp-content {
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .print-view, .solutions-view {
+      display: none;
+      background: white;
+      padding: 36px 40px;
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 30px;
+    }
+
+    .print-header {
+      text-align: center;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .print-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .print-meta-grid {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      font-size: 0.95rem;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .print-q-item {
+      margin-bottom: 22px;
+      page-break-inside: avoid;
+    }
+
+    .print-q-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .print-q-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin-left: 18px;
+      font-size: 0.92rem;
+    }
+
+    .print-btn-bar {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .action-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .action-btn-secondary {
+      background: #f1f5f9;
+      color: var(--slate-700);
+      border: 1px solid var(--slate-200);
+    }
+
+    .action-btn-secondary:hover {
+      background: #e2e8f0;
+      color: var(--slate-800);
+    }
+
+    .answer-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      margin-bottom: 24px;
+    }
+
+    .answer-table th, .answer-table td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .answer-table th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: var(--slate-800);
+    }
+
+    .sol-card {
+      border-left: 4px solid #4f46e5;
+      background: #f8fafc;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 16px;
+      page-break-inside: avoid;
+    }
+
+    .sol-card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    @media print {
+      header, .stats-bar, .filter-bar, .tab-nav, .print-btn-bar {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        padding: 0 !important;
+      }
+      .main-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .print-view {
+        display: block !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .interactive-view, .solutions-view {
+        display: none !important;
+      }
+      .print-q-item {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="header-title-row">
+        <div>
+          <span class="header-badge">🏫 國小六年級社會領域｜108課綱素養導向評量</span>
+          <h1>第 2 單元 2-1：臺灣的民主之路</h1>
+        </div>
+        <div>
+          <span class="header-badge" style="background: #10b981;">全卷 25 題標準測驗</span>
+        </div>
+      </div>
+      <p class="header-desc">
+        依據課本第 34～39 頁完整脈絡設計。涵蓋二戰後接收與物價困境、二二八事件始末與族群衝擊、長達38年的戒嚴體制與人權限制、美麗島事件與解除戒嚴、野百合學運、首次總統直接民選、首次政黨輪替與公民投票等民主里程碑。
+      </p>
+
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchView('interactive')">
+          <span>🎯</span> 線上互動測驗挑戰
+        </button>
+        <button class="tab-btn" onclick="switchView('print')">
+          <span>📄</span> 學生紙筆測驗卷（可列印）
+        </button>
+        <button class="tab-btn" onclick="switchView('solutions')">
+          <span>🔑</span> 教師詳解與題庫手冊
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- ==================== 模式一：線上互動測驗 ==================== -->
+    <div id="interactiveView" class="interactive-view">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-label">作答進度</span>
+          <span class="stat-value" id="progressCount">0 / 25</span>
+        </div>
+        <div class="progress-box">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: #64748b;">
+            <span>完成率</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBar"></div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">目前答對題數</span>
+          <span class="stat-value" id="correctScore" style="color: var(--success);">0 題</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">目前得分（滿分100）</span>
+          <span class="stat-value" id="pointScore" style="color: var(--primary);">0 分</span>
+        </div>
+        <div>
+          <button class="action-btn action-btn-secondary" onclick="resetQuiz()">🔄 重新作答</button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <span class="filter-label">難易度篩選：</span>
+        <button class="filter-chip active" onclick="filterDifficulty('all')">🌟 全部題目 (25)</button>
+        <button class="filter-chip chip-easy" onclick="filterDifficulty('easy')">🟢 基礎奠基 (10 題簡單)</button>
+        <button class="filter-chip chip-medium" onclick="filterDifficulty('medium')">🟡 情境理解 (10 題中等)</button>
+        <button class="filter-chip chip-hard" onclick="filterDifficulty('hard')">🔴 素養思辨 (5 題困難)</button>
+      </div>
+
+      <div id="questionsContainer"></div>
+    </div>
+
+    <!-- ==================== 模式二：紙筆考卷（A4 列印模式） ==================== -->
+    <div id="printView" class="print-view">
+      <div class="print-btn-bar">
+        <button class="action-btn" onclick="window.print()">🖨️ 列印考卷 (Ctrl + P)</button>
+        <button class="action-btn action-btn-secondary" onclick="switchView('interactive')">⬅️ 返回互動測驗</button>
+      </div>
+
+      <div class="print-header">
+        <div style="font-size: 1.1rem; font-weight: 700; color: #475569;">國小社會領域 六年級複習評量卷</div>
+        <h2 class="print-title">第 2 單元 2-1：臺灣的民主之路</h2>
+        <div class="print-meta-grid">
+          <span>六年 _____ 班</span>
+          <span>座號：_______</span>
+          <span>姓名：_________________</span>
+          <span>得分：_______________</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 16px; font-weight: 700; font-size: 0.95rem; background: #f1f5f9; padding: 8px 12px; border-radius: 6px;">
+        ※ 測驗說明：共 25 題單選題（每題 4 分，滿分 100 分），每題請選出一個最適當的答案（選項為 1、2、3、4），並將答案填寫於題號括號內。
+      </div>
+
+      <div id="printQuestionsList"></div>
+    </div>
+
+    <!-- ==================== 模式三：教師手冊與完整解答卷 ==================== -->
+    <div id="solutionsView" class="solutions-view">
+      <div class="print-btn-bar">
+        <button class="action-btn" onclick="copyAllMarkdown()">📋 一鍵複製題庫純文字 (Markdown)</button>
+        <button class="action-btn action-btn-secondary" onclick="switchView('interactive')">⬅️ 返回互動測驗</button>
+      </div>
+
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #3730a3; margin-bottom: 12px;">
+        📖 教師備課手冊：25 題標準答案與布魯姆認知維度分析
+      </h2>
+
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-top: 16px; color: #334155;">【快速查對答案卡】</h3>
+      <table class="answer-table">
+        <thead>
+          <tr>
+            <th>題號</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700; background: #f8fafc;">答案</td>
+            <td>3</td><td>4</td><td>2</td><td>4</td><td>2</td><td>1</td><td>4</td><td>3</td><td>2</td><td>1</td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th>題號</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700; background: #f8fafc;">答案</td>
+            <td>4</td><td>4</td><td>2</td><td>3</td><td>1</td><td>3</td><td>4</td><td>1</td><td>2</td><td>3</td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th>題號</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th colspan="5" style="background: #f8fafc; color: #94a3b8;">（全卷完）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700; background: #f8fafc;">答案</td>
+            <td>1</td><td>2</td><td>1</td><td>4</td><td>3</td>
+            <td colspan="5" style="background: #f8fafc; color: #94a3b8;">每題 4 分 / 滿分 100</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-top: 24px; margin-bottom: 16px; color: #334155;">
+        【逐題布魯姆指標與深度解析】
+      </h3>
+      <div id="solutionsDetailList"></div>
+    </div>
+
+  </main>
+
+  <script>
+    const quizData = [
+  {
+    "id": 1,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 34 頁",
+    "stem": "民國 34 年（西元 1945 年）二次大戰結束，日本宣布無條件投降。臺灣結束了五十年的殖民統治，改由哪一個政府代表同盟國前來接收並統治臺灣？",
+    "options": [
+      "美國軍事政府",
+      "聯合國安理會管理委員會",
+      "中華民國政府",
+      "荷蘭東印度公司代表團"
+    ],
+    "answer": 3,
+    "explanation": "西元 1945 年二次大戰結束，日本戰敗投降，中華民國政府代表同盟國前來接收臺灣，設立「臺灣省行政長官公署」負責在臺施政。"
+  },
+  {
+    "id": 2,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "理解",
+    "page": "課本第 35 頁",
+    "stem": "光復初期臺灣物價飛漲、米糧短缺，老百姓的生活變得非常辛苦。造成當時臺灣民生物資缺乏、經濟惡化的重要原因之一是什麼？",
+    "options": [
+      "臺灣農田突然長不出任何稻米甘蔗",
+      "全島百姓突然都不肯出門工作生產",
+      "強烈颱風連續吹了一整年都沒有停過",
+      "中國大陸爆發國共內戰，政府將臺灣糧食資源運往支援"
+    ],
+    "answer": 4,
+    "explanation": "接收初期中國大陸國共內戰爆發，行政長官公署將臺灣大量稻米與糖等民生物資運往大陸支應戰事，造成臺灣內部物資極度短缺、物價飆漲。"
+  },
+  {
+    "id": 3,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 36 頁",
+    "stem": "民國 36 年 2 月 27 日傍晚，在臺北市延平北路（天馬茶房前）發生了什麼不幸事件，成為引爆全臺「二二八事件」的最直接導火線？",
+    "options": [
+      "兩輛公共汽車在十字路口爭道相撞",
+      "專賣局人員查緝私菸處理失當，打傷菸販並誤殺路人",
+      "學校老師與學生家長發生嚴重爭吵",
+      "百貨公司大特賣引發民眾推擠踩踏"
+    ],
+    "answer": 2,
+    "explanation": "專賣局查緝員查抓私菸時，暴力毆打女菸販林江邁並開槍誤殺旁觀市民陳文溪，引發群眾包圍抗議，隔天演變成席捲全臺的二二八事件。"
+  },
+  {
+    "id": 4,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 36 頁",
+    "stem": "二二八事件爆發後，抗議民眾湧向哪一個關鍵地點，藉由廣播電臺向全臺灣廣播，號召各地同胞共同反抗官員貪腐？",
+    "options": [
+      "臺北火車站大廳售票處",
+      "基隆港燈塔頂樓瞭望台",
+      "陽明山溫泉公共浴室大門",
+      "臺灣廣播電台廣播設施"
+    ],
+    "answer": 4,
+    "explanation": "民眾佔領位於新公園的「臺灣廣播電台」（今臺北二二八紀念館），向全臺廣播抗議長官公署的暴行，消息迅速傳遍全島，各地紛紛響應。"
+  },
+  {
+    "id": 5,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 37 頁",
+    "stem": "民國 38 年（西元 1949 年）隨著國共內戰局勢緊張，政府頒布了哪一項緊急命令，限制人民的基本自由長達三十八年之久？",
+    "options": [
+      "宣布全體國民放假一年出國旅遊",
+      "宣告全臺灣實施戒嚴",
+      "宣布全臺灣學生從此不用寫家庭作業",
+      "宣布全島禁止使用電力與瓦斯"
+    ],
+    "answer": 2,
+    "explanation": "民國 38 年 5 月 20 日，臺灣省警備總司令部宣布全臺實施戒嚴，凍結了憲法保障的多項基本權利，展開了長達三十八年餘的戒嚴統治。"
+  },
+  {
+    "id": 6,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "理解",
+    "page": "課本第 37 頁",
+    "stem": "在長達 38 年的「戒嚴時期」，憲法保障的人民權利受到嚴厲凍結。下列哪些基本自由在當時受到政府極為嚴格的管制？",
+    "options": [
+      "言論、出版、集會、結社與出國的自由",
+      "每天早上在家吃早餐的自由",
+      "晚上十點前上床睡覺的權利",
+      "週末在家客廳看電視的自由"
+    ],
+    "answer": 1,
+    "explanation": "戒嚴令實施後，政府嚴格實施「黨禁」（禁止組新政黨）、「報禁」（管制報紙登記與版面），人民不得隨意集會遊行或發表批評政府的言論，也不得自由出國。"
+  },
+  {
+    "id": 7,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 38 頁",
+    "stem": "民國 68 年 12 月 10 日世界人權日，黨外人士在高雄舉辦遊行爭取民主，遭到軍警包圍並爆發衝突，隨後許多民主人士遭到逮捕審判。這場著名的事件叫做什麼？",
+    "options": [
+      "霧社事件",
+      "二二八事件",
+      "噍吧哖事件",
+      "美麗島事件"
+    ],
+    "answer": 4,
+    "explanation": "民國 68 年在高雄發生的「美麗島事件」（又稱高雄事件），黨外核心幹部幾乎全遭軍法大審入獄，卻也激發了國內外對臺灣民主化的巨大迴響。"
+  },
+  {
+    "id": 8,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 38 頁",
+    "stem": "在國內民間人士長期奮鬥與國際關注下，蔣經國總統在民國幾年正式宣布「臺灣地區解除戒嚴」，讓臺灣邁向政治自由化？",
+    "options": [
+      "民國 50 年",
+      "民國 60 年",
+      "民國 76 年",
+      "民國 100 年"
+    ],
+    "answer": 3,
+    "explanation": "民國 76 年（西元 1987 年）7 月 15 日，政府正式解除戒嚴，隨後開放黨禁與報禁，臺灣正式步入民主轉型的新時代。"
+  },
+  {
+    "id": 9,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 39 頁",
+    "stem": "民國 79 年，數千名大學生聚集在中正紀念堂廣場靜坐抗議，提出「解散國民大會、廢除動員戡亂條款」等改革訴求。這場關鍵的學生運動叫做什麼？",
+    "options": [
+      "五四愛國運動",
+      "野百合學運",
+      "太陽花學運",
+      "青年抗日運動"
+    ],
+    "answer": 2,
+    "explanation": "民國 79 年 3 月爆發的「野百合學運」（三月學運），學生以純潔自主的野百合花為象徵，在中正紀念堂和平靜坐，成功促使政府啟動全面國會改革。"
+  },
+  {
+    "id": 10,
+    "difficulty": "easy",
+    "diffName": "簡單 🟢",
+    "bloom": "記憶",
+    "page": "課本第 39 頁",
+    "stem": "臺灣在民國幾年舉行了歷史上第一次的「總統副總統公民直接選舉」，由全體人民一人一票選出國家領導人，真正落實了主權在民？",
+    "options": [
+      "民國 85 年",
+      "民國 38 年",
+      "民國 50 年",
+      "民國 70 年"
+    ],
+    "answer": 1,
+    "explanation": "民國 85 年（西元 1996 年）臺灣舉行首屆民選總統大選，李登輝當選第九任總統，中華民國成為亞洲成熟實踐元首直選的民主國家。"
+  },
+  {
+    "id": 11,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "分析",
+    "page": "課本第 35 頁",
+    "stem": "二次大戰結束後，臺灣百姓熱烈歡迎祖國軍政官員，但不久後雙方卻產生了嚴重的隔閡與衝突。造成雙方溝通困難的最主要歷史原因是什麼？",
+    "options": [
+      "大陸官員全都不喜歡吃臺灣熱帶水果",
+      "臺灣人民突然全部忘記如何開口說話",
+      "大陸官員全都不會走路，出門只能坐轎子",
+      "兩岸經歷五十年隔絕，在語言文化與行政習慣上存在巨大落差與誤解歧視"
+    ],
+    "answer": 4,
+    "explanation": "臺灣經歷日本統治五十年，習慣守時守法與近代治理；而從戰亂中來臺的大陸官員帶有戰時軍事習氣與猜忌，雙方在語言文化上缺乏理解，導致摩擦日深。"
+  },
+  {
+    "id": 12,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "記憶",
+    "page": "課本第 34 頁",
+    "stem": "民國 38 年國共內戰由中國共產黨取得勝利。共產黨隨後在中國大陸建立了哪一個政權，造成兩岸長年分立對峙的現狀？",
+    "options": [
+      "大日本帝國",
+      "大清帝國政府",
+      "中華民國政府",
+      "中華人民共和國"
+    ],
+    "answer": 4,
+    "explanation": "西元 1949 年 10 月 1 日，毛澤東在北平宣布成立「中華人民共和國」，而中華民國政府同年 12 月遷往臺灣臺北，形成海峽兩岸分裂分治局勢。"
+  },
+  {
+    "id": 13,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "應用",
+    "page": "課本第 37 頁",
+    "scenario": "歷史小情境：在戒嚴年代，如果有人在文章裡稍微批評政府官員，或者私下傳閱外國翻譯書籍，就可能半夜被秘密警察帶走，甚至未經公開公平審判就被送去綠島監禁。",
+    "stem": "請問這種人人提心吊膽、言論被嚴密監控的肅殺氣氛，在歷史上被稱為什麼？",
+    "options": [
+      "黃金發展十年歲月",
+      "戒嚴令嚴格審查思想、出版與言論自由的白色恐怖體制",
+      "歡樂無比的民間嘉年華活動",
+      "全民自由幸福新世界"
+    ],
+    "answer": 2,
+    "explanation": "戒嚴時期政府利用情報特務機關嚴格監視社會，濫捕批評政府的異議人士與無辜百姓，造成許多冤假錯案，這段時期被稱為「白色恐怖」。"
+  },
+  {
+    "id": 14,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "理解",
+    "page": "課本第 37 頁",
+    "stem": "在戒嚴時期，許多大家耳熟能詳的經典流行歌曲（如〈媽媽請你也保重〉、〈何日君再來〉）都被列為禁歌。當時政府禁唱這些歌曲最常見的藉口是什麼？",
+    "options": [
+      "認為歌手唱歌走音不好聽，影響市民聽覺健康",
+      "認為唱片的塑膠黑膠材質容易著火太過危險",
+      "認為歌詞過於悲觀幽怨、打擊社會士氣或涉嫌思想動搖",
+      "認為歌詞字數印太多，嚴重浪費印刷紙張"
+    ],
+    "answer": 3,
+    "explanation": "戒嚴審查制度極為嚴苛，任何思念家鄉、歌詞悲傷或被聯想可能動搖反共決心的歌曲，都會被扣上「靡靡之音」或「思想問題」的帽子而遭查禁。"
+  },
+  {
+    "id": 15,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "分析",
+    "page": "課本第 38 頁",
+    "stem": "民國 68 年美麗島事件後，政府對多位黨外領導人進行公開審判。這場大審判雖然讓許多民主前輩身陷囹圄，但對臺灣隨後的政治發展帶來了何種正面推動？",
+    "options": [
+      "引起國際高度關注與國內反思，激勵更多民眾勇敢要求政府改革體制與恢復人權",
+      "讓全臺灣百姓從此不敢再關心政治，大家都移民到海外",
+      "促使政府宣布永遠實施戒嚴，不再接受任何意見",
+      "促使聯合國派大批外國軍隊接管臺灣的所有法院"
+    ],
+    "answer": 1,
+    "explanation": "美麗島軍法大審透過媒體報導引發國內外極大震撼，辯護律師團與政治家屬前仆後繼投入民主運動，凝聚了民間要求民主化與人權保障的強大力量。"
+  },
+  {
+    "id": 16,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "理解",
+    "page": "課本第 38 頁",
+    "stem": "社會課本提到：「民國 76 年是臺灣走向民主自由最關鍵的里程碑。」在那一年，臺灣社會迎來了哪一項重大的制度變革？",
+    "options": [
+      "宣布發行新臺幣並推動公地放領政策",
+      "宣布臺灣加入聯合國並成為常任理事國",
+      "民國 76 年政府正式宣布解除戒嚴並廢除報禁與黨禁",
+      "宣布全臺灣所有的高速公路全線永久免費通行"
+    ],
+    "answer": 3,
+    "explanation": "民國 76 年解除戒嚴是臺灣戰後政治發展的重大分水嶺，臺灣人民重新獲得了創辦報紙、組織新政黨與自由集會言論的憲政權利。"
+  },
+  {
+    "id": 17,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "分析",
+    "page": "課本第 39 頁",
+    "stem": "民國 79 年的「野百合學運」中，大學生坐在中正紀念堂廣場要求進行憲政大改革。這場學生運動最直接促成了哪一項重大的政治改革？",
+    "options": [
+      "恢復日本時代的臺灣總督統治制度",
+      "規定全國大學生一律直接當選為立法委員",
+      "宣布永久解散全臺灣所有的合法學校",
+      "促成廢除長期未改選的國大代表體制，推動總統由人民直接選舉"
+    ],
+    "answer": 4,
+    "explanation": "野百合學運獲得全民廣泛支持，促成李登輝總統召開國是會議，終止動員戡亂時期、全面退職四十多年未曾改選的「萬年國代」，奠定民選總統基礎。"
+  },
+  {
+    "id": 18,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "分析",
+    "page": "課本第 39 頁",
+    "stem": "民國 89 年（西元 2000 年）臺灣總統大選，政權和平地從長期執政的國民黨轉移給民進黨。這次「政黨輪替」在歷史上具有何種非凡的意義？",
+    "options": [
+      "政權轉移能完全透過和平選票而非暴力流血衝突完成，展現民主制度的成熟",
+      "證明從此之後臺灣再也不需要舉辦任何選舉",
+      "造成中華民國憲法被完全廢除不再有效",
+      "代表臺灣即將交由外國軍事顧問團接管統治"
+    ],
+    "answer": 1,
+    "explanation": "和平的政黨輪替是檢驗成熟民主國家的最高標準。臺灣在 2000 年首度以神聖選票完成政權和平移轉，確立了民主選舉不可逆轉的憲政常態。"
+  },
+  {
+    "id": 19,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "理解",
+    "page": "課本第 39 頁",
+    "stem": "除了平時由人民投票選出民意代表制定法律外，臺灣後來也公布實施了《公民投票法》。推動「公民投票（公投）」的最主要價值是什麼？",
+    "options": [
+      "讓大家每年多放幾天假去遊樂園遊玩",
+      "讓人民能直接針對國家重大公共議題投票表達意見，提供施政依據",
+      "為了在體育場比賽看誰投籃球投得比較準",
+      "全面取代國小國中學生所有的期中考與期末考"
+    ],
+    "answer": 2,
+    "explanation": "公民投票是「直接民主」的體現，讓人民除了定期選出公職人員外，能針對重大國家政策或法律複決直接投下贊成或反對票，展現人民當家作主的意志。"
+  },
+  {
+    "id": 20,
+    "difficulty": "medium",
+    "diffName": "中等 🟡",
+    "bloom": "分析",
+    "page": "課本第 36 頁",
+    "stem": "二二八事件在民國 36 年發生後，為什麼往後的近四十年間，臺灣社會幾乎沒有人敢在公開場合談論這件事，受害者家屬也只能暗自流淚？",
+    "options": [
+      "因為大家都覺得那是微不足道的小事早就遺忘了",
+      "因為受害者家屬全都領到高額獎金開開心心生活",
+      "隨後實施長達三十八年的戒嚴壓制，禁止公開談論真相與檢討歷史創痛",
+      "因為政府早就為受害者蓋好紀念碑，大家都非常滿意"
+    ],
+    "answer": 3,
+    "explanation": "二二八事件發生後，政府隨即進入白色恐怖與戒嚴體制，將二二八事件視為不可談論的禁忌，受難家屬在長期恐懼中不敢聲張，歷史傷口被壓抑數十年。"
+  },
+  {
+    "id": 21,
+    "difficulty": "hard",
+    "diffName": "困難 🔴",
+    "bloom": "分析",
+    "page": "課本第 34、35 頁",
+    "stem": "戰後臺灣百姓原本滿懷熱忱「慶祝光復、回歸祖國」，但短短一年多內社會氣氛卻急轉直下，最終引發悲劇。導致民眾由期待轉為憤怒的最核心根源是什麼？",
+    "options": [
+      "接收官員貪污濫權、軍警軍紀敗壞、物資被搜刮導致惡性通膨，且本島菁英政治參與權遭粗暴剝奪",
+      "臺灣民眾覺得大陸軍隊的制服顏色不夠時尚好看",
+      "長官公署要求全臺灣的小吃攤每天都要免費宴客",
+      "臺灣人突然不想使用中文，堅持大家只能講英文"
+    ],
+    "answer": 1,
+    "explanation": "接收時期行政長官公署政治專權腐敗、軍紀渙散、壟斷經濟貿易，加上把糧食運往大陸支援內戰造成惡性物價膨脹，臺灣人對政治參與的期待落空，民怨全面爆發。"
+  },
+  {
+    "id": 22,
+    "difficulty": "hard",
+    "diffName": "困難 🔴",
+    "bloom": "想法評判",
+    "page": "課本第 37 頁",
+    "stem": "在戒嚴與白色恐怖時期，政府常以「鞏固國家安全、防範匪諜滲透」為理由逮捕民眾，卻造成無數家庭破碎與冤假錯案。從現代憲政民主檢視，這種統治最大的謬誤何在？",
+    "options": [
+      "逮捕的人數還不夠多，沒有把全臺灣人都傳喚問話",
+      "以「維護國家安全」為藉口，徹底剝奪人民思想自由與正當法律審判程序，使公權力淪為殘害異見的暴政",
+      "抓人時情報機關沒有準備好足夠熱騰騰的便當",
+      "只是抓錯了幾隻流浪狗，對一般國民生活毫無影響"
+    ],
+    "answer": 2,
+    "explanation": "真正的國家安全不能建立在摧毀國民人權的基礎上；戒嚴體制以反共為名廢除公平公開的司法審判，公權力無限膨脹，對人民基本權利造成了不可挽回的傷害。"
+  },
+  {
+    "id": 23,
+    "difficulty": "hard",
+    "diffName": "困難 🔴",
+    "bloom": "分析",
+    "page": "課本第 39 頁",
+    "stem": "民國 85 年臺灣首度舉行總統直接民選，國際社會讚譽臺灣完成了「寧靜革命」。總統由人民直接投票選出，在憲政哲理上最核心的突破是什麼？",
+    "options": [
+      "落實了「主權在民」的現代民主核心原則，使最高國家領導人的權力正當性直接源自人民的選票授權",
+      "證明了在臺灣只有大富豪才有資格競選擔任總統職位",
+      "讓臺灣國民從此永遠免除向政府繳納任何稅款的義務",
+      "保證每位國民每年都可以免費獲得一次環遊世界的機票"
+    ],
+    "answer": 1,
+    "explanation": "過去總統由國民大會代表間接選出，容易淪為統治者的橡皮圖章；總統全民直選將最高治理權力徹底歸還給兩千三百萬人民，全面落實了憲法「主權在民」的精神。"
+  },
+  {
+    "id": 24,
+    "difficulty": "hard",
+    "diffName": "困難 🔴",
+    "bloom": "想法評判",
+    "page": "課本第 36、37、39 頁",
+    "stem": "近年來政府積極推動二二八事件與白色恐怖時期的「轉型正義」，包含平反名譽、公開機密檔案、向家屬道歉與補償。推動轉型正義對臺灣社會最重要的核心價值為何？",
+    "options": [
+      "純粹為了多增加幾天國定紀念假日讓大家放假休息",
+      "為了挑起族群對立，鼓勵大家繼續互相仇恨與報復",
+      "為了向外國觀光客展示臺灣有很多莊嚴的歷史展覽館",
+      "唯有誠實還原歷史真相、追究國家公權力不法責任，才能撫平歷史傷痕並確立人權底線，實現真正的族群和解"
+    ],
+    "answer": 4,
+    "explanation": "轉型正義不是為了清算報復，而是為了誠實面對國家過去犯下的錯誤、平反受難者尊嚴，並藉由歷史真相教育下一代：永遠不得以任何理由侵犯基本人權。"
+  },
+  {
+    "id": 25,
+    "difficulty": "hard",
+    "diffName": "困難 🔴",
+    "bloom": "單元統整",
+    "page": "課本第 34～39 頁全單元",
+    "stem": "【單元大總結】回顧臺灣半世紀的歷程：從二二八的悲痛、三十八年戒嚴的白色恐怖，再到美麗島事件、野百合學運與總統全民直選。這段歷史給我們最重要的啟發是什麼？",
+    "options": [
+      "自由與民主是天生自然會掉下來的禮物，不需要付出任何努力",
+      "只要每天吃得飽穿得暖，有沒有人權與言論自由完全無關緊要",
+      "民主與自由從來不是任何統治者的慈善施恩，而是無數前輩在黑暗中以青春、自由乃至生命衝撞爭取而來的成果，需要世代永續珍惜與守護",
+      "過去發生的歷史悲劇應該全部封鎖隱瞞，避免下一代知道任何真相"
+    ],
+    "answer": 3,
+    "explanation": "臺灣今日的民主自由與人權法治，是一代代臺灣前輩在威權高壓下，克服恐懼、犧牲自由甚至生命所爭取而來的珍貴成果，身為現代公民應當加倍珍視與守護。"
+  }
+];
+
+    const userAnswers = {};
+    let currentFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderInteractiveQuestions();
+      renderPrintQuestions();
+      renderSolutionsDetail();
+      updateStats();
+    });
+
+    function switchView(viewName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('interactiveView').style.display = 'none';
+      document.getElementById('printView').style.display = 'none';
+      document.getElementById('solutionsView').style.display = 'none';
+
+      if (viewName === 'interactive') {
+        document.getElementById('interactiveView').style.display = 'block';
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      } else if (viewName === 'print') {
+        document.getElementById('printView').style.display = 'block';
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+      } else if (viewName === 'solutions') {
+        document.getElementById('solutionsView').style.display = 'block';
+        document.querySelectorAll('.tab-btn')[2].classList.add('active');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function filterDifficulty(diff) {
+      currentFilter = diff;
+      document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+      event.target.classList.add('active');
+      renderInteractiveQuestions();
+    }
+
+    function renderInteractiveQuestions() {
+      const container = document.getElementById('questionsContainer');
+      container.innerHTML = '';
+
+      const filtered = quizData.filter(q => {
+        if (currentFilter === 'all') return true;
+        return q.difficulty === currentFilter;
+      });
+
+      filtered.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = `card-q-${q.id}`;
+
+        const diffBadgeClass = q.difficulty === 'easy' ? 'badge-easy' : (q.difficulty === 'medium' ? 'badge-medium' : 'badge-hard');
+        let scenarioHtml = q.scenario ? `<div class="q-scenario">${q.scenario}</div>` : '';
+
+        let optionsHtml = '<div class="options-grid">';
+        q.options.forEach((optText, idx) => {
+          const optNum = idx + 1;
+          const isSelected = userAnswers[q.id] === optNum;
+          const isAnswered = userAnswers[q.id] !== undefined;
+
+          let btnClass = 'option-btn';
+          if (isAnswered) {
+            if (optNum === q.answer) {
+              btnClass += ' correct';
+            } else if (isSelected && optNum !== q.answer) {
+              btnClass += ' wrong';
+            }
+          }
+
+          optionsHtml += `
+            <button class="${btnClass}" onclick="handleSelectOption(${q.id}, ${optNum})" ${isAnswered ? 'disabled' : ''}>
+              <span class="opt-key">${optNum}</span>
+              <span class="opt-text">${optText}</span>
+            </button>
+          `;
+        });
+        optionsHtml += '</div>';
+
+        const isAnswered = userAnswers[q.id] !== undefined;
+        const expShowClass = isAnswered ? 'show' : '';
+
+        const explanationHtml = `
+          <div class="explanation-box ${expShowClass}" id="exp-${q.id}">
+            <div class="exp-title">
+              <span>💡 【素養解析】</span>
+              <span style="font-weight: 700; color: #16a34a; margin-left: 6px;">正確解答：選項 (${q.answer})</span>
+            </div>
+            <div class="exp-content">${q.explanation}</div>
+          </div>
+        `;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div class="q-num-box">
+              <span class="q-number">第 ${q.id} 題</span>
+              <span class="badge ${diffBadgeClass}">${q.diffName}</span>
+            </div>
+            <div class="q-badges">
+              <span class="badge badge-bloom">🧠 ${q.bloom}</span>
+              <span class="badge badge-page">📖 ${q.page}</span>
+            </div>
+          </div>
+          ${scenarioHtml}
+          <div class="q-stem">${q.stem}</div>
+          ${optionsHtml}
+          ${explanationHtml}
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function handleSelectOption(questionId, selectedOpt) {
+      if (userAnswers[questionId] !== undefined) return;
+      userAnswers[questionId] = selectedOpt;
+      renderInteractiveQuestions();
+      updateStats();
+    }
+
+    function updateStats() {
+      const answeredCount = Object.keys(userAnswers).length;
+      const total = quizData.length;
+      let correctCount = 0;
+
+      quizData.forEach(q => {
+        if (userAnswers[q.id] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const percent = Math.round((answeredCount / total) * 100);
+      const points = Math.round((correctCount / total) * 100);
+
+      document.getElementById('progressCount').innerText = `${answeredCount} / ${total}`;
+      document.getElementById('progressPercent').innerText = `${percent}%`;
+      document.getElementById('progressBar').style.width = `${percent}%`;
+      document.getElementById('correctScore').innerText = `${correctCount} 題`;
+      document.getElementById('pointScore').innerText = `${points} 分`;
+    }
+
+    function resetQuiz() {
+      if (confirm("確定要清除所有作答紀錄重新開始嗎？")) {
+        for (const key in userAnswers) {
+          delete userAnswers[key];
+        }
+        renderInteractiveQuestions();
+        updateStats();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function renderPrintQuestions() {
+      const printContainer = document.getElementById('printQuestionsList');
+      printContainer.innerHTML = '';
+
+      quizData.forEach(q => {
+        const item = document.createElement('div');
+        item.className = 'print-q-item';
+
+        let scenarioText = q.scenario ? `<div style="font-size: 0.92rem; color: #475569; margin: 4px 0 6px 0; padding: 4px 8px; background: #f8fafc; border-left: 3px solid #64748b;">${q.scenario}</div>` : '';
+
+        item.innerHTML = `
+          <div class="print-q-title">
+            ( &nbsp; &nbsp; ) ${q.id}. ${q.stem}
+          </div>
+          ${scenarioText}
+          <div class="print-q-options">
+            <div>(1) ${q.options[0]}</div>
+            <div>(2) ${q.options[1]}</div>
+            <div>(3) ${q.options[2]}</div>
+            <div>(4) ${q.options[3]}</div>
+          </div>
+        `;
+        printContainer.appendChild(item);
+      });
+    }
+
+    function renderSolutionsDetail() {
+      const solContainer = document.getElementById('solutionsDetailList');
+      solContainer.innerHTML = '';
+
+      quizData.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'sol-card';
+        card.innerHTML = `
+          <div class="sol-card-header">
+            <span>第 ${q.id} 題【${q.diffName}】｜ 正確解答：(${q.answer})</span>
+            <span style="font-size: 0.85rem; color: #475569;">${q.bloom}・${q.page}</span>
+          </div>
+          <div style="font-weight: 600; margin-bottom: 6px; font-size: 0.95rem;">${q.stem}</div>
+          <div style="font-size: 0.9rem; color: #475569; margin-bottom: 8px;">
+            (1) ${q.options[0]} &nbsp; | &nbsp; (2) ${q.options[1]} &nbsp; | &nbsp; (3) ${q.options[2]} &nbsp; | &nbsp; (4) ${q.options[3]}
+          </div>
+          <div style="font-size: 0.92rem; color: #3730a3; line-height: 1.6; background: white; padding: 8px 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <strong>🎯 素養深度解析：</strong>${q.explanation}
+          </div>
+        `;
+        solContainer.appendChild(card);
+      });
+    }
+
+    function copyAllMarkdown() {
+      let mdText = `# 國小六年級社會科素養評量題庫\n## 單元 2-1：臺灣的民主之路\n\n`;
+      quizData.forEach(q => {
+        mdText += `### 第 ${q.id} 題【難度：${q.diffName}｜${q.bloom}｜${q.page}】\n`;
+        if (q.scenario) mdText += `> ${q.scenario}\n\n`;
+        mdText += `**題目**：${q.stem}\n`;
+        mdText += `1. ${q.options[0]}\n`;
+        mdText += `2. ${q.options[1]}\n`;
+        mdText += `3. ${q.options[2]}\n`;
+        mdText += `4. ${q.options[3]}\n\n`;
+        mdText += `**【正確解答】**：${q.answer}\n`;
+        mdText += `**【素養解析】**：${q.explanation}\n\n---\n\n`;
+      });
+
+      navigator.clipboard.writeText(mdText).then(() => {
+        alert("✅ 25 題完整題目、選項與詳解已複製到剪貼簿！可直接貼至 Word 或教學文件使用。");
+      }).catch(err => {
+        alert("複製失敗，請手動複製。");
+      });
+    }
+  </script>
+</body>
+</html>
